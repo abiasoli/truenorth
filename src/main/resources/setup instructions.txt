@@ -1,0 +1,17 @@
+TrueNorth Restaurant app
+
+Notes
+
+This application is built for three environments: test, dev & prod. Regarding database settings,
+test environment makes use of a H2 configured for Postgres db (bear in mind this env is meant to
+be used for unit testing purposes only, application-test.properties file is located at src/test/resources folder).
+Dev env uses a local Postgres database (scripts to create tables are provided within the src/main/resources/SQL folder
+and db connection settings are exposed in the application-dev.properties file). Finally, prod environment is set to run
+on an instance in Amazon Postgres Database.
+
+Setup instructions
+
+1) Clone repository from https://github.com/abiasoli/truenorth.git (HTTPS) or git@github.com:abiasoli/truenorth.git (SSH).
+2) Run "mvn clean install" command to download dependencies for the project.
+3) Execute "mvn spring-boot:run -Dspring.profiles.active=[env]". Default environment is set to prod.
+4) Import Postman endpoints to test the application.

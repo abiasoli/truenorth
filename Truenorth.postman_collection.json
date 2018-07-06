@@ -1,0 +1,192 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Truenorth",
+		"_postman_id": "b6f1132e-7383-5112-5233-326fbcc314b2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Restaurant",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"logo\": \"https://media-cdn.tripadvisor.com/media/photo-s/0b/ff/c5/f0/don-ignacio.jpg\",\r\n\t\"commercialName\": \"Don Ignacio\",\r\n\t\"legalName\": \"TLQPC SRL\",\r\n\t\"rating\": 5,\r\n\t\"reviews\": [{\r\n\t\t\"name\": \"Martin García\",\r\n\t\t\"review\": \"Muy buen restaurante para comer! Lo recomiendo\",\r\n\t\t\"rating\": 5\r\n\t}],\r\n\t\"meals\": [{\r\n\t\t\"name\": \"Ojo de bife\",\r\n\t\t\"description\": \"Exquisito ojo de bife con vegetales al vapor\",\r\n\t\t\"price\": \"150\"\r\n\t},\r\n\t{\r\n\t\t\"name\": \"Costillitas de cerdo a la riojana\",\r\n\t\t\"description\": \"Costillas de cerdo con pure de manzana y papas al horno\",\r\n\t\t\"price\": \"230\"\r\n\t}],\r\n\t\"commercialEmail\": \"andres.biasoli@yahoo.com.ar\",\r\n\t\"adminNumber\": \"011 4861-3133\",\r\n\t\"address\": \"Av. Rivadavia 3439\",\r\n\t\"location\": {\r\n\t\t\"latitude\": \"-34.6106419\",\r\n\t\t\"longitude\": \"-58.4172536\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Order",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/delivery/order",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"meals\": [\r\n\t\t{\r\n\t\t\t\"id\": 1\r\n\t\t},\r\n\t\t{\r\n\t\t\t\"id\": 2\r\n\t\t}\r\n\t],\r\n\t\"address\": \"Salguero 4425 2A\",\r\n\t\"location\": {\r\n\t\t\"latitude\": \"-34.6067447\",\r\n\t\t\"longitude\": \"-58.4202439\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Review",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant/review",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"name\": \"Felipe Godoy\",\r\n\t\"review\": \"Muy bueno!!\",\r\n\t\"rating\": 4,\r\n\t\"restaurantId\": 1\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Restaurant",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"logo\": \"https://media-cdn.tripadvisor.com/media/photo-s/0b/ff/c5/f0/don-ignacio.jpg\",\r\n\t\"commercialName\": \"Don Pepe\",\r\n\t\"legalName\": \"TLQPC SRL\",\r\n\t\"rating\": 5,\r\n\t\"reviews\": [{\r\n\t\t\"id\": 1,\r\n\t\t\"name\": \"Martin García\",\r\n\t\t\"review\": \"Muy buen restaurante para comer! Lo recomiendo!\",\r\n\t\t\"rating\": 5\r\n\t}],\r\n\t\"meals\": [{\r\n\t\t\"id\": 1,\r\n\t\t\"name\": \"Ojo de bife\",\r\n\t\t\"description\": \"Exquisito ojo de bife con vegetales al vapor\",\r\n\t\t\"price\": \"150\"\r\n\t},\r\n\t{\r\n\t\t\"id\": 2,\r\n\t\t\"name\": \"Costillitas de cerdo a la riojana\",\r\n\t\t\"description\": \"Costillas de cerdo con pure de manzana y papas al horno\",\r\n\t\t\"price\": \"230\"\r\n\t}],\r\n\t\"commercialEmail\": \"andres.biasoli@yahoo.com.ar\",\r\n\t\"adminNumber\": \"011 4861-3133\",\r\n\t\"address\": \"Av. Rivadavia 3439\",\r\n\t\"location\": {\r\n\t\t\"latitude\": \"-34.6106419\",\r\n\t\t\"longitude\": \"-58.4172536\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Rate Restaurant",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant/1/rating/4",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "List Restaurants",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"logo\": \"https://media-cdn.tripadvisor.com/media/photo-s/0b/ff/c5/f0/don-ignacio.jpg\",\r\n\t\"commercialName\": \"Don Ignacio\",\r\n\t\"legalName\": \"TLQPC SRL\",\r\n\t\"rating\": 5,\r\n\t\"reviews\": [{\r\n\t\t\"name\": \"Martin García\",\r\n\t\t\"review\": \"Excelente restaurante para comer! Lo recomiendo\",\r\n\t\t\"rating\": 5\r\n\t}],\r\n\t\"meals\": [{\r\n\t\t\"name\": \"Ojo de bife\",\r\n\t\t\"description\": \"Exquisito ojo de bife con vegetales al vapor\",\r\n\t\t\"price\": \"150\"\r\n\t}],\r\n\t\"commercialEmail\": \"donignacio@gmail.com\",\r\n\t\"adminNumber\": \"011 4861-3133\",\r\n\t\"address\": \"Av. Rivadavia 3439\",\r\n\t\"location\": {\r\n\t\t\"latitude\": \"-34.6106419\",\r\n\t\t\"longitude\": \"-58.4172536\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Restaurants by Rating",
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/api/truenorth/restaurants?rating=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"truenorth",
+						"restaurants"
+					],
+					"query": [
+						{
+							"key": "rating",
+							"value": "5",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"logo\": \"https://media-cdn.tripadvisor.com/media/photo-s/0b/ff/c5/f0/don-ignacio.jpg\",\r\n\t\"commercialName\": \"Don Ignacio\",\r\n\t\"legalName\": \"TLQPC SRL\",\r\n\t\"rating\": 5,\r\n\t\"reviews\": [{\r\n\t\t\"name\": \"Martin García\",\r\n\t\t\"review\": \"Excelente restaurante para comer! Lo recomiendo\",\r\n\t\t\"rating\": 5\r\n\t}],\r\n\t\"meals\": [{\r\n\t\t\"name\": \"Ojo de bife\",\r\n\t\t\"description\": \"Exquisito ojo de bife con vegetales al vapor\",\r\n\t\t\"price\": \"150\"\r\n\t}],\r\n\t\"commercialEmail\": \"donignacio@gmail.com\",\r\n\t\"adminNumber\": \"011 4861-3133\",\r\n\t\"address\": \"Av. Rivadavia 3439\",\r\n\t\"location\": {\r\n\t\t\"latitude\": \"-34.6106419\",\r\n\t\t\"longitude\": \"-58.4172536\"\r\n\t}\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Restaurant",
+			"request": {
+				"url": "http://localhost:8080/api/truenorth/restaurants/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
