@@ -6,7 +6,7 @@ This application is built for three environments: test, dev & prod. Regarding da
 
 Setup instructions
 
-1) Clone repository from [github url].
+1) Clone repository from https://github.com/abiasoli/truenorth.git (HTTPS) or git@github.com:abiasoli/truenorth.git (SSH).
 2) Run "mvn clean install" command to download dependencies for the project.
 3) Execute "mvn spring-boot:run -Dspring.profiles.active=[env]". Default environment is set to prod.
 4) Import Postman endpoints to test the application.

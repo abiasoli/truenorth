@@ -53,7 +53,7 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/restaurant/{id}/rating/{rating}", method = RequestMethod.PUT)
-	public Float rateRestaurant(@PathVariable Long id, @PathVariable @Min(1) @Max(5) Integer rating){
+	public Float rateRestaurant(@PathVariable Long id, @PathVariable @Min(1) @Max(5) int rating){
 		return restaurantService.rate(id, rating);
 	}
 	

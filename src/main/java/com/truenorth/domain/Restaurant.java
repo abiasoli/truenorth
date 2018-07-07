@@ -38,7 +38,7 @@ public class Restaurant {
 	@Column(nullable=false)
 	private String address;
 	
-	@OneToOne(cascade= CascadeType.PERSIST)
+	@OneToOne(cascade= CascadeType.ALL)
 	private Location location;
 	
 	@OneToMany(mappedBy="restaurant", cascade= CascadeType.ALL)
@@ -67,14 +67,7 @@ public class Restaurant {
 	}
 
 	public BigDecimal calculateRating(){
-		int count = 0; float sum = 0;
-		for (Review review : reviews) {
-			sum += review.getRating();
-			count++;
-		}
-		if(count > 0){
-			this.rating = new BigDecimal(sum / count);
-		}
+		this.rating = new BigDecimal(this.reviews.stream().mapToDouble(review -> review.getRating()).average().getAsDouble());
 		return this.rating;
 	}
 	

@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -72,38 +74,30 @@ public class RestaurantService {
 		}
 	}
 
-	public Float rate(Long id, Integer rating) {
-		BigDecimal newRating = BigDecimal.ZERO;
-		Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(id);
-			if(optionalRestaurant.isPresent()){
-				Restaurant currentRestaurant = optionalRestaurant.get();
-				if(currentRestaurant.getRating().compareTo(BigDecimal.ZERO) != 0){
-					Review review = new Review("annonymous", "", rating, currentRestaurant);
-					reviewRepository.save(review);
-					newRating = currentRestaurant.calculateRating();
-					restaurantRepository.save(currentRestaurant);
-				}
-			}
-		return newRating.floatValue();
+	@Transactional(rollbackOn=Exception.class)
+	public synchronized Float rate(Long id, int rating) {
+		return getRatingAverage(id, rating, "annonymous", "");
 	}
-
+	
+	@Transactional(rollbackOn=Exception.class)
+	public synchronized Float addReview(ReviewDto dto) {
+		return getRatingAverage(dto.getRestaurantId(), dto.getRating(), dto.getName(), dto.getReview());
+	}
+	
+	private Float getRatingAverage(Long restaurantId, int rating, String name, String description){
+		Float newRating = new Float(rating);
+		Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(restaurantId);
+		if(optionalRestaurant.isPresent()){
+			Restaurant currentRestaurant = optionalRestaurant.get();
+			Review review = new Review(name, description, rating, currentRestaurant);
+			reviewRepository.save(review);
+			newRating = currentRestaurant.calculateRating().floatValue();
+			restaurantRepository.save(currentRestaurant);
+		}
+		return newRating;
+	}
+	
 	public RestaurantRepository getRepository() {
 		return restaurantRepository;
 	}
-
-	public Float addReview(ReviewDto dto) {
-		Float rating = 0F;
-		Long restaurantId = dto.getRestaurantId();
-		Optional<Restaurant> optionalRestaurant = restaurantRepository.findById(restaurantId);
-			if(optionalRestaurant.isPresent()){
-				Restaurant restaurant = optionalRestaurant.get();
-				Review review = new Review(dto.getName(), dto.getReview(), dto.getRating(), restaurant);
-				reviewRepository.save(review);
-				rating = restaurant.calculateRating().floatValue();
-				restaurantRepository.save(restaurant);
-			}
-		return rating;
-	}
-	
-	
 }
