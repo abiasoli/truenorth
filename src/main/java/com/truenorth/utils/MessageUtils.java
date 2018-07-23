@@ -9,6 +9,7 @@ public class MessageUtils {
 	public static final String SYSTEM_ERROR_DIFFERENT_RESTAURANT_MEALS = "The order contained meals from different restaurants!";
 	public static final String USER_ERROR_DURATION_NOT_FOUND = "Sorry, ETA for delivery could not be determined.";
 	public static final String USER_ERROR_MEAL_NOT_FOUND = "Sorry, the meal chosen could not be found!";
+	public static final String USER_ERROR_RESTAURANNT_NOT_FOUND = "Sorry, no restaurant could be found!";
 	public static final String USER_ERROR_DIFFERENT_RESTAURANT_MEALS = "The order can only have meals from only one restaurant!";
 	
 	// INFO MESSAGES

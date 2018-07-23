@@ -14,6 +14,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.truenorth.domain.Location;
 import com.truenorth.domain.Meal;
@@ -49,6 +50,7 @@ public class DeliveryService {
 		this.dateUtils = dateUtils;
 	}
 	
+	@Transactional
 	public void create(OrderDto orderDto) throws NotFoundException {
 		
 		List<Meal> meals = new ArrayList<>();

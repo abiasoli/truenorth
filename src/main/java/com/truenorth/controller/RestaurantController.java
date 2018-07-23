@@ -20,6 +20,8 @@ import com.truenorth.dto.RestaurantDto;
 import com.truenorth.dto.ReviewDto;
 import com.truenorth.service.RestaurantService;
 
+import javassist.NotFoundException;
+
 @RestController
 @RequestMapping("/api/truenorth/restaurants")
 @Validated
@@ -38,7 +40,7 @@ public class RestaurantController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteRestaurant(@PathVariable Long id) {
+	public void deleteRestaurant(@PathVariable Long id) throws NotFoundException{
 		restaurantService.delete(id);
 	}
 	
@@ -48,17 +50,17 @@ public class RestaurantController {
 	} 
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public void updateRestaurant(@PathVariable @NotNull Long id, @RequestBody @Valid RestaurantDto restaurantDto){
+	public void updateRestaurant(@PathVariable @NotNull Long id, @RequestBody @Valid RestaurantDto restaurantDto) throws NotFoundException{
 		restaurantService.update(id, restaurantDto);
 	}
 	
 	@RequestMapping(value = "/restaurant/{id}/rating/{rating}", method = RequestMethod.PUT)
-	public Float rateRestaurant(@PathVariable Long id, @PathVariable @Min(1) @Max(5) int rating){
+	public Float rateRestaurant(@PathVariable Long id, @PathVariable @Min(1) @Max(5) int rating) throws NotFoundException{
 		return restaurantService.rate(id, rating);
 	}
 	
 	@RequestMapping(value = "/restaurant/review", method = RequestMethod.POST)
-	public Float addReview(@RequestBody @Valid ReviewDto reviewDto){
+	public Float addReview(@RequestBody @Valid ReviewDto reviewDto) throws NotFoundException{
 		return restaurantService.addReview(reviewDto);
 	}
 }

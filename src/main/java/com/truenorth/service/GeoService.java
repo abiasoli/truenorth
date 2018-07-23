@@ -7,6 +7,8 @@ import org.joda.time.DateTime;
 import org.joda.time.ReadableInstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.google.maps.model.LatLng;
 import com.truenorth.connector.GeoConnector;
@@ -26,6 +28,7 @@ public class GeoService {
 		this.dateUtils = dateUtils;
 	}
 	
+	@Transactional(propagation=Propagation.NOT_SUPPORTED)
 	public LocalDateTime calculateETA(Location from, Location to, List<Meal> meals) {
 		
 		DateTime now = dateUtils.now();

@@ -18,6 +18,8 @@ import com.truenorth.domain.Restaurant;
 import com.truenorth.service.RestaurantService;
 import com.truenorth.utils.TestScriptUtils;
 
+import javassist.NotFoundException;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
@@ -28,7 +30,7 @@ public class RestaurantServiceTest {
 	
 	@Test
 	@Sql(executionPhase = ExecutionPhase.BEFORE_TEST_METHOD, scripts = TestScriptUtils.INSERT)
-	public void delete_withValidRestaurantId_shouldDeleteRestaurant(){
+	public void delete_withValidRestaurantId_shouldDeleteRestaurant() throws NotFoundException{
 		Long id = 1L;
 		Optional<Restaurant> restaurant = restaurantService.getRepository().findById(id);
 		assertTrue(restaurant.isPresent());
