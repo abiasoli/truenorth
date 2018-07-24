@@ -114,4 +114,13 @@ public class RestaurantService {
 	public RestaurantRepository getRepository() {
 		return restaurantRepository;
 	}
+
+	@Transactional(readOnly=true)
+	public RestaurantDto getById(Long restaurantId) throws NotFoundException {
+		Optional<Restaurant> restaurant = restaurantRepository.findById(restaurantId);
+		if(restaurant.isPresent()){
+			return restaurantConverter.convertToDto(restaurant.get());
+		}
+		throw new NotFoundException(USER_ERROR_RESTAURANNT_NOT_FOUND);
+	}
 }

@@ -14,7 +14,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Service;
 
-import com.truenorth.dto.NotificationDto;
+import com.truenorth.dto.DeliveryNotificationDto;
 
 @Service
 public class NotificationService {
@@ -30,15 +30,15 @@ public class NotificationService {
 	}
 	
     @KafkaListener(topics = "${cloudkarafka.topic}")
-    public void processMessage(Message<NotificationDto> message,
+    public void processMessage(Message<DeliveryNotificationDto> message,
                                @Header(KafkaHeaders.RECEIVED_PARTITION_ID) List<Integer> partitions,
                                @Header(KafkaHeaders.RECEIVED_TOPIC) List<String> topics,
                                @Header(KafkaHeaders.OFFSET) List<Long> offsets) {
        
        LOGGER.info(SYSTEM_INFO_ORDER_RECEIVED, topics.get(0));
-       NotificationDto notification = message.getPayload();
-       emailService.send(notification);
-       smsService.send(notification);
+       DeliveryNotificationDto notification = message.getPayload();
+       emailService.notifyDelivery(notification);
+       smsService.notifyDelivery(notification);
     }
 
 }

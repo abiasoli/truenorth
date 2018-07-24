@@ -24,6 +24,6 @@ public class DeliveryController {
 	
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
     public void addOrder(@RequestBody OrderDto orderDto) throws NotFoundException { 
-		deliveryService.create(orderDto);
+		deliveryService.deliverOrder(orderDto);
 	}
 }

@@ -3,7 +3,7 @@ package com.truenorth.dto;
 import java.io.Serializable;
 
 
-public class NotificationDto implements Serializable {
+public class DeliveryNotificationDto implements Serializable {
 
 	private static final long serialVersionUID = -4791947125960438048L;
 
@@ -11,13 +11,13 @@ public class NotificationDto implements Serializable {
 	private String restaurantEmail;
 	private String restaurantName;
 
-	public NotificationDto(OrderDto order, String restaurantEmail, String restaurantName) {
+	public DeliveryNotificationDto(OrderDto order, String restaurantEmail, String restaurantName) {
 		this.order = order;
 		this.restaurantEmail = restaurantEmail;
 		this.restaurantName = restaurantName;
 	}
 
-	public NotificationDto(){}
+	public DeliveryNotificationDto(){}
 	
 	public OrderDto getOrder() {
 		return order;
@@ -33,7 +33,7 @@ public class NotificationDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "NotificationDto [order=" + order + ", restaurantEmail=" + restaurantEmail + ", restaurantName="
+		return "DeliveryNotificationDto [order=" + order + ", restaurantEmail=" + restaurantEmail + ", restaurantName="
 				+ restaurantName + "]";
 	}
 	

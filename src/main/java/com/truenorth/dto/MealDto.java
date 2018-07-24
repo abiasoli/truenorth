@@ -4,17 +4,20 @@ import java.math.BigDecimal;
 
 import javax.validation.constraints.NotBlank;
 
-public class MealDto {
 
+public class MealDto {
 	private Long id;
 	private @NotBlank String name;
 	private @NotBlank String description;
 	private @NotBlank BigDecimal price;
+	private Long restaurantId;
+	private int cookTime;
 
-	public MealDto(String name, String description, BigDecimal price) {
+	public MealDto(String name, String description, BigDecimal price, Long restaurantId) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
+		this.restaurantId = restaurantId;
 	}
 	
 	public MealDto(Long id) {
@@ -55,8 +58,26 @@ public class MealDto {
 		this.price = price;
 	}
 
+	public Long getRestaurantId() {
+		return restaurantId;
+	}
+
+	public void setRestaurantId(Long restaurantId) {
+		this.restaurantId = restaurantId;
+	}
+	
+	public int getCookTime() {
+		return cookTime;
+	}
+
+	public void setCookTime(int cookTime) {
+		this.cookTime = cookTime;
+	}
+
 	@Override
 	public String toString() {
-		return "MealDto [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+		return "MealDto [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
+				+ ", restaurantId=" + restaurantId + "]";
 	}
+	
 }

@@ -9,7 +9,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.truenorth.dto.NotificationDto;
+import com.truenorth.dto.DeliveryNotificationDto;
 
 @Service
 public class EmailService implements Sendable{
@@ -23,7 +23,7 @@ public class EmailService implements Sendable{
 	}
 
 	@Override
-	public void send(NotificationDto notification) {
+	public void notifyDelivery(DeliveryNotificationDto notification) {
 		StringBuilder sb = new StringBuilder();
 	    sb.append("Hi ").append(notification.getRestaurantName()).append("! These are the details of your order:\n\n");
 	    notification.getOrder().getMeals().forEach(meal -> {

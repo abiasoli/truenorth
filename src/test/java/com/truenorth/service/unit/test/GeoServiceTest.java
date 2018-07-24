@@ -21,9 +21,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.google.maps.model.LatLng;
 import com.truenorth.connector.GeoConnector;
-import com.truenorth.domain.Location;
-import com.truenorth.domain.Meal;
-import com.truenorth.domain.Restaurant;
+import com.truenorth.dto.LocationDto;
+import com.truenorth.dto.MealDto;
+import com.truenorth.dto.RestaurantDto;
 import com.truenorth.service.GeoService;
 import com.truenorth.utils.DateUtils;
 
@@ -45,12 +45,12 @@ public class GeoServiceTest {
 	public void whenCalculateETA_withLocationsForTwoMeals_shouldReturnExpectedETA(){
 		DateTime dateTime = new DateTime(2018, 1, 1, 10, 25, 0);
 		LocalDateTime expectedEta = LocalDateTime.of(2018, 1, 1, 10, 55, 0);
-		Location from = new Location(45.454545, 69.478787);
-		Location to = new Location(35.412479, 53.232421);
-		Restaurant restaurant = new Restaurant();
-		Meal meal1 = new Meal("Bife", "excelente bife", new BigDecimal(120), restaurant);
-		Meal meal2 = new Meal("Pastas", "sorrentinos", new BigDecimal(90), restaurant);
-		List<Meal> meals = new ArrayList<Meal>();
+		LocationDto from = new LocationDto(45.454545, 69.478787);
+		LocationDto to = new LocationDto(35.412479, 53.232421);
+		RestaurantDto restaurant = new RestaurantDto();
+		MealDto meal1 = new MealDto("Bife", "excelente bife", new BigDecimal(120), restaurant.getId());
+		MealDto meal2 = new MealDto("Pastas", "sorrentinos", new BigDecimal(90), restaurant.getId());
+		List<MealDto> meals = new ArrayList<MealDto>();
 		meals.add(meal1);
 		meals.add(meal2);
 		when(dateUtils.now()).thenReturn(dateTime);

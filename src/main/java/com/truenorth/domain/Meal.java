@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="meals")
@@ -27,7 +28,9 @@ public class Meal extends Item {
 	
 	@ManyToOne(cascade= CascadeType.ALL)
 	private Restaurant restaurant;
-	private int cookTime = 10; //default value in minutes for all meals for illustration purposes
+	
+	@Transient
+	private int cookTime = 10; //default value in minutes for all meals for illustration purposes, so not being persisted
 
 	public Meal(String name, String description, BigDecimal price, Restaurant restaurant) {
 		super(name);

@@ -12,8 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.maps.model.LatLng;
 import com.truenorth.connector.GeoConnector;
-import com.truenorth.domain.Location;
-import com.truenorth.domain.Meal;
+import com.truenorth.dto.LocationDto;
+import com.truenorth.dto.MealDto;
 import com.truenorth.utils.DateUtils;
 
 @Service
@@ -28,12 +28,12 @@ public class GeoService {
 		this.dateUtils = dateUtils;
 	}
 	
-	@Transactional(propagation=Propagation.NOT_SUPPORTED)
-	public LocalDateTime calculateETA(Location from, Location to, List<Meal> meals) {
+	@Transactional(propagation=Propagation.NEVER)
+	public LocalDateTime calculateETA(LocationDto from, LocationDto to, List<MealDto> meals) {
 		
 		DateTime now = dateUtils.now();
 		DateTime cookTime = now;
-		for(Meal meal : meals){
+		for(MealDto meal : meals){
 			cookTime = cookTime.plusMinutes(meal.getCookTime());
 		}
 		ReadableInstant departureTime = cookTime;

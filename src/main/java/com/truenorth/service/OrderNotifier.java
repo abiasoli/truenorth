@@ -28,7 +28,7 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 
-import com.truenorth.dto.NotificationDto;
+import com.truenorth.dto.DeliveryNotificationDto;
 
 @Component
 public class OrderNotifier {
@@ -44,9 +44,9 @@ public class OrderNotifier {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void send(NotificationDto notification) {
+    public void sendDeliveryNotification(DeliveryNotificationDto notification) {
     	
-    	Message<NotificationDto> message = MessageBuilder
+    	Message<DeliveryNotificationDto> message = MessageBuilder
                 .withPayload(notification)
                 .setHeader(KafkaHeaders.TOPIC, topic)
                 .build();

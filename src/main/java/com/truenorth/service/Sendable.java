@@ -1,8 +1,8 @@
 package com.truenorth.service;
 
-import com.truenorth.dto.NotificationDto;
+import com.truenorth.dto.DeliveryNotificationDto;
 
 public interface Sendable {
 
-	void send(NotificationDto notificationDto);
+	void notifyDelivery(DeliveryNotificationDto notificationDto);
 }
