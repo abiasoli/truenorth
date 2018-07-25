@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.truenorth.dto.OrderDto;
 import com.truenorth.service.DeliveryService;
 
+import io.swagger.annotations.ApiOperation;
 import javassist.NotFoundException;
 
 @RestController
@@ -23,6 +24,7 @@ public class DeliveryController {
 	}
 	
 	@RequestMapping(value = "/order", method = RequestMethod.POST)
+	@ApiOperation(value="Post Order")
     public void addOrder(@RequestBody OrderDto orderDto) throws NotFoundException { 
 		deliveryService.deliverOrder(orderDto);
 	}

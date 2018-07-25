@@ -69,7 +69,7 @@ public class RestaurantControllerTest {
 		
 		Float expectedAverage = 4.25F;
 		String id = "1", newRate = "5";
-		String url = "http://localhost:" + port + "/api/truenorth/restaurants/restaurant/{id}/rating/{rate}";
+		String url = "http://localhost:" + port + "/api/truenorth/restaurants/{id}/rating/{rate}";
 		Map<String, String> pathVariables = new HashMap<String, String>();
 		pathVariables.put("id", id);
 		pathVariables.put("rate", newRate);
@@ -88,7 +88,7 @@ public class RestaurantControllerTest {
 	public void whenRateRestaurants_withInvalidRate_shouldThrowExceptionWithCustomMessage() {
 		
 		String id = "1", newRate = "6";
-		String url = "http://localhost:" + port + "/api/truenorth/restaurants/restaurant/{id}/rating/{rate}";
+		String url = "http://localhost:" + port + "/api/truenorth/restaurants/{id}/rating/{rate}";
 		Map<String, String> pathVariables = new HashMap<String, String>();
 		pathVariables.put("id", id);
 		pathVariables.put("rate", newRate);

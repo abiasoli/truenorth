@@ -88,7 +88,7 @@ public class RestaurantService {
 
 	@Transactional
 	public synchronized Float rate(Long id, int rating) throws NotFoundException {
-		return getRatingAverage(id, rating, "annonymous", "");
+		return getRatingAverage(id, rating, "anonymous", "");
 	}
 	
 	@Transactional

@@ -23,6 +23,7 @@
 		<orika-core.version>1.4.5</orika-core.version>
 		<google.api.version>0.1.1</google.api.version>
 		<jassist.version>3.20.0-GA</jassist.version>
+		<swagger.version>2.7.0</swagger.version>
 	</properties>
 	
 	<dependencies>
@@ -110,6 +111,20 @@
             <artifactId>javassist</artifactId>
             <version>${jassist.version}</version>
         </dependency>
+        
+        <!-- Swagger -->
+        
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
 		
 	</dependencies>
 	<build>

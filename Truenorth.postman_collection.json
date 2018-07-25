@@ -10,7 +10,7 @@
 		{
 			"name": "Create Restaurant",
 			"request": {
-				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant",
+				"url": "http://localhost:8080/api/truenorth/restaurants",
 				"method": "POST",
 				"header": [
 					{
@@ -50,7 +50,7 @@
 		{
 			"name": "Create Review",
 			"request": {
-				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant/review",
+				"url": "http://localhost:8080/api/truenorth/restaurants/review",
 				"method": "POST",
 				"header": [
 					{
@@ -90,7 +90,7 @@
 		{
 			"name": "Rate Restaurant",
 			"request": {
-				"url": "http://localhost:8080/api/truenorth/restaurants/restaurant/1/rating/4",
+				"url": "http://localhost:8080/api/truenorth/restaurants/1/rating/4",
 				"method": "PUT",
 				"header": [
 					{
